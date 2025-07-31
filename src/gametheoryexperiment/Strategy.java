@@ -30,7 +30,7 @@ public abstract class Strategy {
     }
 
     public double getPointsPerGame() {
-        return gamesPlayed == 0 ? 0 : totalPointsPerRound / gamesPlayed;
+        return gamesPlayed == 0 ? 0 : (totalPointsPerRound / gamesPlayed) * 200;
     }
 
     public double getGamesPlayed() {
