@@ -19,6 +19,11 @@ public class Tester extends Strategy {
             shouldAlternate = true;
         if (shouldAlternate)
             return opponentHistory.size() % 2 == 0;
-        return true;
+        return opponentHistory.get(opponentHistory.size() - 1);
+    }
+
+    @Override
+    public void reset() {
+        shouldAlternate = false;
     }
 }

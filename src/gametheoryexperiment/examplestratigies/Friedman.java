@@ -17,4 +17,9 @@ public class Friedman extends Strategy {
             shouldCooperate = false;
         return shouldCooperate;
     }
+
+    @Override
+    public void reset() {
+        shouldCooperate = true;
+    }
 }

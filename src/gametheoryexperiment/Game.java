@@ -4,8 +4,14 @@ import java.util.ArrayList;
 
 public class Game {
     private final Strategy[] strategies;
+    private final boolean shouldPlayThemselves;
 
     public Game(Strategy[] strategies) {
+        this(strategies, true);
+    }
+
+    public Game(Strategy[] strategies, boolean shouldPlayThemselves) {
+        this.shouldPlayThemselves = shouldPlayThemselves;
         this.strategies = strategies;
     }
 
@@ -34,7 +40,8 @@ public class Game {
         System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
 
         if (strategy1 == strategy2) {
-            strategy1.updateScore(score1, rounds);
+            if (shouldPlayThemselves)
+                strategy1.updateScore((score1 + score2) / 2, rounds);
             return;
         }
         strategy1.updateScore(score1, rounds);

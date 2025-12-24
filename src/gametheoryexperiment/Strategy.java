@@ -24,20 +24,24 @@ public abstract class Strategy {
      */
     public abstract boolean shouldCooperate(ArrayList<Boolean> opponentHistory);
 
-    public void updateScore(int points, int roundsPlayed) {
+    public final void updateScore(int points, int roundsPlayed) {
         this.totalPointsPerRound += (double) points / roundsPlayed;
         gamesPlayed++;
+        reset();
     }
 
-    public double getPointsPerGame() {
+    public void reset() {
+    }
+
+    public final double getPointsPerGame() {
         return gamesPlayed == 0 ? 0 : (totalPointsPerRound / gamesPlayed) * 200;
     }
 
-    public double getGamesPlayed() {
+    public final double getGamesPlayed() {
         return gamesPlayed;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 }
