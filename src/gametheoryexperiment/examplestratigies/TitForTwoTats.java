@@ -10,7 +10,7 @@ public class TitForTwoTats extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         if (opponentHistory.size() < 2)
             return true;
         int size = opponentHistory.size();

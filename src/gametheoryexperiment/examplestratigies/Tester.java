@@ -12,7 +12,7 @@ public class Tester extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         if (opponentHistory.isEmpty())
             return false;
         if (opponentHistory.get(0) && !shouldAlternate)

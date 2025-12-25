@@ -10,7 +10,7 @@ public class Random extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         return Math.random() < 0.5;
     }
 }

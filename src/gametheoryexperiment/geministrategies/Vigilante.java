@@ -18,7 +18,7 @@ public class Vigilante extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         int round = opponentHistory.size();
 
         if (round == 0) return true;

@@ -18,7 +18,7 @@ public class TheAnalyst extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         int round = opponentHistory.size();
 
         // 1. Initial Trust Building (The first 30 rounds)

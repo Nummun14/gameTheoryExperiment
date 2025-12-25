@@ -10,7 +10,7 @@ public class TitForTat extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         if (opponentHistory.isEmpty())
             return true;
         return opponentHistory.get(opponentHistory.size() - 1);

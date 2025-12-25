@@ -15,7 +15,7 @@ public class Peacekeeper extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         int round = opponentHistory.size();
 
         // 1. ALWAYS cooperate first.

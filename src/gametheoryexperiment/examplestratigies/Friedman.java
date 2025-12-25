@@ -12,7 +12,7 @@ public class Friedman extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         if (!opponentHistory.isEmpty() && !opponentHistory.get(opponentHistory.size() - 1))
             shouldCooperate = false;
         return shouldCooperate;
