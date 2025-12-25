@@ -19,10 +19,11 @@ public abstract class Strategy {
      * Determines whether the strategy should cooperate or defect.
      * If the opponent history is used, then it is up to the strategy to decide how to use it. Bear in mind that it'll be empty on the first round.
      *
+     * @param history         the history of this strategy's moves, where true means cooperate and false means defect.
      * @param opponentHistory the history of the opponent's moves, where true means cooperate and false means defect.
      * @return true if the strategy should cooperate, false if it should defect.
      */
-    public abstract boolean shouldCooperate(ArrayList<Boolean> opponentHistory);
+    public abstract boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory);
 
     public final void updateScore(int points, int roundsPlayed) {
         this.totalPointsPerRound += (double) points / roundsPlayed;
@@ -30,6 +31,9 @@ public abstract class Strategy {
         reset();
     }
 
+    /**
+     * Resets any internal state the strategy may have between games.
+     */
     public void reset() {
     }
 
