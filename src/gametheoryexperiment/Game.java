@@ -37,13 +37,18 @@ public class Game {
             score1 += scores[0];
             score2 += scores[1];
         }
-        System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
 
         if (strategy1 == strategy2) {
-            if (shouldPlayThemselves)
+            if (shouldPlayThemselves) {
                 strategy1.updateScore((score1 + score2) / 2, rounds);
+                System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
+            }
             return;
         }
+
+        if (strategy1 != strategy2)
+            System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
+
         strategy1.updateScore(score1, rounds);
         strategy2.updateScore(score2, rounds);
     }

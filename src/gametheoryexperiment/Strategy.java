@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Abstract class representing a strategy in the prisoner dilemma.
- * Each strategy must implement the {@link Strategy#shouldCooperate(ArrayList)} with their game strategy.
+ * Each strategy must implement the {@link Strategy#shouldCooperate(ArrayList, ArrayList)} with their game strategy.
  */
 public abstract class Strategy {
     private double totalPointsPerRound = 0;
