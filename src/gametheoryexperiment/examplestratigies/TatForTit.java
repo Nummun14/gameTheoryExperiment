@@ -10,7 +10,7 @@ public class TatForTit extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         if (opponentHistory.isEmpty())
             return false;
         return !opponentHistory.get(opponentHistory.size() - 1);

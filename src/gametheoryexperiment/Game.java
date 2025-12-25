@@ -29,21 +29,26 @@ public class Game {
         int rounds = (int) (Math.random() * 50) + 175;
 
         for (int i = 0; i < rounds; i++) {
-            boolean coop1 = strategy1.shouldCooperate(history2);
-            boolean coop2 = strategy2.shouldCooperate(history1);
+            boolean coop1 = strategy1.shouldCooperate(history1, history2);
+            boolean coop2 = strategy2.shouldCooperate(history2, history1);
             history1.add(coop1);
             history2.add(coop2);
             int[] scores = getScores(coop1, coop2);
             score1 += scores[0];
             score2 += scores[1];
         }
-        System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
 
         if (strategy1 == strategy2) {
-            if (shouldPlayThemselves)
+            if (shouldPlayThemselves) {
                 strategy1.updateScore((score1 + score2) / 2, rounds);
+                System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
+            }
             return;
         }
+
+        if (strategy1 != strategy2)
+            System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
+
         strategy1.updateScore(score1, rounds);
         strategy2.updateScore(score2, rounds);
     }

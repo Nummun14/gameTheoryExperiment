@@ -15,7 +15,7 @@ public class TheProfessional extends Strategy {
     }
 
     @Override
-    public boolean shouldCooperate(ArrayList<Boolean> opponentHistory) {
+    public boolean shouldCooperate(ArrayList<Boolean> history, ArrayList<Boolean> opponentHistory) {
         int round = opponentHistory.size();
 
         // 1. Start Strong: Cooperate on the first move to build trust.
