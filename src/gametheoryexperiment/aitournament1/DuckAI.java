@@ -1,4 +1,4 @@
-package gametheoryexperiment.aitournament;
+package gametheoryexperiment.aitournament1;
 
 import gametheoryexperiment.Strategy;
 
