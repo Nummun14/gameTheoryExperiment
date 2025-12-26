@@ -5,14 +5,31 @@ import java.util.ArrayList;
 public class Game {
     private final Strategy[] strategies;
     private final boolean shouldPlayThemselves;
+    private final double errorPercentage;
 
     public Game(Strategy[] strategies) {
-        this(strategies, true);
+        this(strategies, true, 0);
     }
 
     public Game(Strategy[] strategies, boolean shouldPlayThemselves) {
+        this(strategies, shouldPlayThemselves, 0);
+    }
+
+    public Game(Strategy[] strategies, double errorPercentage) {
+        this(strategies, true, errorPercentage);
+    }
+
+    /**
+     * Creates a new Game instance with the given strategies.
+     *
+     * @param strategies the strategies competing in the game
+     * @param shouldPlayThemselves whether strategies should play against themselves or not
+     * @param errorPercentage the percentage chance (0-100) that a strategy's intended move is flipped (cooperate -> defect or defect -> cooperate)
+     */
+    public Game(Strategy[] strategies, boolean shouldPlayThemselves, double errorPercentage) {
         this.shouldPlayThemselves = shouldPlayThemselves;
         this.strategies = strategies;
+        this.errorPercentage = errorPercentage;
     }
 
     public void play() {
@@ -29,8 +46,8 @@ public class Game {
         int rounds = (int) (Math.random() * 50) + 175;
 
         for (int i = 0; i < rounds; i++) {
-            boolean coop1 = strategy1.shouldCooperate(history1, history2);
-            boolean coop2 = strategy2.shouldCooperate(history2, history1);
+            boolean coop1 = (Math.random() * 100 < errorPercentage) != strategy1.shouldCooperate(history1, history2);
+            boolean coop2 = (Math.random() * 100 < errorPercentage) !=  strategy2.shouldCooperate(history2, history1);
             history1.add(coop1);
             history2.add(coop2);
             int[] scores = getScores(coop1, coop2);
@@ -46,8 +63,7 @@ public class Game {
             return;
         }
 
-        if (strategy1 != strategy2)
-            System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
+        System.out.println(strategy1.getName() + " vs " + strategy2.getName() + ": " + score1 + " - " + score2);
 
         strategy1.updateScore(score1, rounds);
         strategy2.updateScore(score2, rounds);
